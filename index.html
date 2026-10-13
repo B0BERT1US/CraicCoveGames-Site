@@ -1,0 +1,108 @@
+---
+layout: default
+nav: home
+title: CraicCove Games | Indie game studio, Northern Ireland
+---
+{% assign s = site.data.site %}
+
+<section class="hero" id="top">
+  <div class="hero-inner wrap">
+    <div class="hero-text">
+      <span class="eyebrow">{{ s.location }}</span>
+      <h1>{{ s.hero.title_line_1 }}<br>{{ s.hero.title_line_2 }}</h1>
+      <p class="tagline">{{ s.hero.tagline }}</p>
+      <div class="btn-row" style="margin-top:10px">
+        <a class="btn" href="{{ '/identity-protocol/' | relative_url }}">{{ s.hero.button_1 }}</a>
+        <a class="btn btn-quiet" href="{{ '/join/' | relative_url }}">{{ s.hero.button_2 }}</a>
+      </div>
+    </div>
+    <div class="hero-logo">
+      <img src="{{ '/img/logo.jpg' | relative_url }}" alt="{{ s.studio_name }} logo">
+    </div>
+  </div>
+</section>
+
+<section class="band band-deep" id="project">
+  <div class="wrap">
+    <h2>{{ s.project.heading }}</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="section bg-black">
+  <div class="game wrap">
+    <img class="banner" src="{{ '/img/identity-protocol-banner.png' | relative_url }}" alt="Identity Protocol key art">
+    <p class="hook">{{ s.project.hook }}</p>
+    <p class="blurb">{{ s.project.blurb }}</p>
+    <div class="btn-row center">
+      <a class="btn btn-red" href="{{ '/identity-protocol/' | relative_url }}">{{ s.project.button_1 }}</a>
+      <a class="btn btn-grey" href="{{ s.steam_url }}" target="_blank" rel="noopener">{{ s.project.button_2 }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="about">
+  <div class="wrap">
+    <h2>{{ s.about_heading }}</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="subband">
+  <div class="wrap"><h3>{{ s.name_section.heading }}</h3></div>
+</section>
+
+<section class="section bg-navy">
+  <div class="cols wrap">
+    {% for c in s.name_section.columns %}
+    <div class="col">
+      <h3>{{ c.title }}</h3>
+      <p>{{ c.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band" id="mission">
+  <div class="wrap">
+    <h2>{{ s.mission.heading }}</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="section bg-navy" style="padding-bottom:24px">
+  <div class="narrow"><p class="statement">{{ s.mission.statement }}</p></div>
+</section>
+
+<section class="section bg-navy" style="padding-top:48px;padding-bottom:80px">
+  <div class="cols wrap">
+    {% for c in s.mission.columns %}
+    <div class="col">
+      <span class="num">0{{ forloop.index }}</span>
+      <h3>{{ c.title }}</h3>
+      <p>{{ c.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band" id="team">
+  <div class="wrap">
+    <h2>{{ s.team.heading }}</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="section bg-navy" style="padding-bottom:88px">
+  <div class="cols wrap">
+    {% for m in s.team.members %}
+    <div class="col">
+      <img class="photo" src="{{ m.photo | relative_url }}" alt="{{ m.name }}">
+      <h3 style="margin-top:8px">{{ m.name }}</h3>
+      <p class="role">{{ m.role }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% include newsletter.html %}

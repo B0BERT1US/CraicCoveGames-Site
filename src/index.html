@@ -1,0 +1,120 @@
+---
+layout: layout.html
+permalink: /
+---
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="kicker">{{ home.hero.kicker }}</span>
+      <h1>{{ home.hero.title_line_1 }}<br>{{ home.hero.title_line_2 }}</h1>
+      <p>{{ home.hero.text }}</p>
+      <div class="buttons">
+        <a class="btn" href="{{ '/identity-protocol/' | url }}">{{ home.hero.button_1 }}</a>
+        <a class="btn quiet" href="{{ '/join-us/' | url }}">{{ home.hero.button_2 }}</a>
+      </div>
+    </div>
+    <div class="hero-logo">
+      <img src="{{ site.logo | img | url }}" alt="{{ site.name }} logo">
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="project">
+  <div class="wrap">
+    <h2>{{ home.project.heading }}</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="section black game">
+  <div class="wrap">
+    <img class="banner" src="{{ game.banner | img | url }}" alt="{{ game.title }} key art">
+    <p class="hook">{{ home.project.hook }}</p>
+    <p class="lead">{{ home.project.text }}</p>
+    <div class="buttons center">
+      <a class="btn red" href="{{ '/identity-protocol/' | url }}">{{ home.project.button }}</a>
+      {% if site.steam != "" %}<a class="btn ghost" href="{{ site.steam }}" target="_blank" rel="noopener">{{ home.project.steam_button }}</a>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="band" id="about">
+  <div class="wrap">
+    <h2>{{ home.about.heading }}</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="subband">
+  <div class="wrap"><h3>{{ home.name.heading }}</h3></div>
+</section>
+
+<section class="section navy">
+  <div class="wrap cols">
+    {% for c in home.name.columns %}
+    <div class="col">
+      <h3>{{ c.title }}</h3>
+      <p>{{ c.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band" id="mission">
+  <div class="wrap">
+    <h2>{{ home.mission.heading }}</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="section navy" style="padding-bottom: 24px;">
+  <div class="narrow">
+    <p class="statement">{{ home.mission.statement }}</p>
+  </div>
+</section>
+
+<section class="section navy" style="padding-top: 24px;">
+  <div class="wrap cols">
+    {% for c in home.mission.columns %}
+    <div class="col">
+      <span class="num">0{{ forloop.index }}</span>
+      <h3>{{ c.title }}</h3>
+      <p>{{ c.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band" id="team">
+  <div class="wrap">
+    <h2>{{ home.team.heading }}</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="section navy">
+  <div class="wrap cols">
+    {% for m in home.team.members %}
+    <div class="col">
+      <img src="{{ m.photo | img | url }}" alt="{{ m.name }}">
+      <h3>{{ m.name }}</h3>
+      <p class="role">{{ m.role }}</p>
+      {% if m.bio and m.bio != "" %}<p>{{ m.bio }}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% if site.newsletter_form_id != "" %}
+<section class="band">
+  <div class="wrap">
+    <h2>{{ home.newsletter.heading }}</h2>
+    <div class="rule"></div>
+    <form class="inline-form" style="margin-top: 28px;" action="https://formspree.io/f/{{ site.newsletter_form_id }}" method="POST">
+      <input type="email" name="email" placeholder="Your email" required aria-label="Email">
+      <button class="btn" type="submit">{{ home.newsletter.button }}</button>
+    </form>
+    <p style="margin-top: 14px; color: var(--muted); font-size: 15px;">{{ home.newsletter.text }}</p>
+  </div>
+</section>
+{% endif %}

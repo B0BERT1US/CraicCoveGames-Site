@@ -1,0 +1,80 @@
+# Builds the live site from the main branch and the preview site from the
+# preview branch, then deploys both to GitHub Pages:
+#   live     https://<your-domain>/
+#   preview  https://<your-domain>/preview/
+name: Build and deploy
+
+on:
+  push:
+    branches: [main, preview]
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Pages CMS payload as JSON
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out live (main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: live
+
+      - name: Check out preview
+        uses: actions/checkout@v4
+        with:
+          ref: preview
+          path: preview
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build live site
+        working-directory: live
+        run: |
+          npm install --no-audit --no-fund
+          npx eleventy
+
+      - name: Build preview site
+        working-directory: preview
+        run: |
+          npm install --no-audit --no-fund
+          PREVIEW=1 npx eleventy --pathprefix=/preview/
+
+      - name: Combine
+        run: |
+          mkdir -p live/_site/preview
+          cp -r preview/_site/. live/_site/preview/
+          touch live/_site/.nojekyll
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: live/_site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,94 @@
+# ============================================================
+#  ALL THE WORDS ON THE SITE LIVE IN THIS ONE FILE.
+#  Edit the text after the colons. Keep the quotes. Save = live.
+# ============================================================
+
+studio_name: "CraicCove Games"
+location: "Omagh, Northern Ireland"
+email: "craiccovegames@gmail.com"
+tiktok_url: "https://www.tiktok.com/"
+podcast_url: "https://open.spotify.com/"
+steam_url: "https://store.steampowered.com/"
+
+hero:
+  title_line_1: "Welcome To"
+  title_line_2: "CraicCove Games"
+  tagline: "A Northern Irish indie game development studio. Three of us, one game, and a habit of picking subjects other studios leave alone."
+  button_1: "See Identity Protocol"
+  button_2: "Join The Team"
+
+project:
+  heading: "Our Current Project"
+  hook: "Arrest or kill. The machine decides."
+  blurb: "A tactical FPS where you are a police robot, an experiment built to replace the human force. Every mission is a test. Your choices decide whether the experiment succeeds or gets shut down."
+  button_1: "Find Out More"
+  button_2: "Wishlist On Steam"
+
+about_heading: "About Us"
+
+name_section:
+  heading: "The Name"
+  columns:
+    - title: "Craic"
+      text: "Craic is an Irish slang word that means fun. We wanted it in the name to represent the country we proudly come from."
+    - title: "Cove"
+      text: "A cove is a small sheltered bay, a safe spot where boats pull in out of the weather. A place for fun, real stories and good times. That is what we want our studio to represent."
+    - title: "Games"
+      text: "The obvious part of the name. We could have said studio or interactive, but we did not. Games are our passion and games are what we will make."
+
+mission:
+  heading: "Our Mission"
+  statement: "At CraicCove Games we make games about modern problems. We hand the controls to the player and let them explore the possible solutions, because you understand an issue differently once you have had to make the call yourself."
+  columns:
+    - title: "Real Issues"
+      text: "Before we make a game we find an issue going on in the real world. Something real, not fantasy."
+    - title: "Your Control"
+      text: "Then we work out how to look at that issue from inside a game, and hand the controls to the player to decide how it moves forward."
+    - title: "Good Craic"
+      text: "We do not set out to make a lecture. We make it fun to play, or the message does not land. Fun first, then the point."
+
+team:
+  heading: "Meet The Team"
+  members:
+    - name: "Mark Buick"
+      role: "Co-Founder, 3D Modeller"
+      photo: "img/mark-buick.jpg"
+    - name: "Dylan Kelly"
+      role: "Co-Founder, Programmer"
+      photo: "img/dylan-kelly.jpg"
+    - name: "Ciaran Fisher"
+      role: "Co-Founder, Level Design"
+      photo: "img/ciaran-fisher.jpg"
+
+# ---------- Identity Protocol page ----------
+game:
+  title: "Identity Protocol"
+  hook: "Arrest or kill. The machine decides."
+  intro: "You are an experimental police robot being trained to replace the human force. Each mission is a situation with more than one way through it. How you handle it decides whether the experiment survives."
+  pillars:
+    - title: "Brute Force"
+      text: "Go in loud. Fast, effective, and the suspects remember it."
+    - title: "Tactical"
+      text: "Plan the approach, control the room, nobody needs to get hurt."
+    - title: "Negotiation"
+      text: "Talk them down. Slower, riskier, and the only way some of them come out alive."
+  squad: "A hive mind of up to four robot units under your control. One mind, four bodies, every decision shared."
+
+# ---------- Join Us page ----------
+join:
+  heading: "Join Us"
+  intro: "We are three people and we are not hiring in the normal sense, but if you make things and want in on what we are building, tell us about yourself."
+  # Paste the Google Form embed link here (Send > Embed > copy the src URL)
+  form_embed_url: ""
+
+# ---------- Contact page ----------
+contact:
+  heading: "Get In Touch"
+  intro: "Press, players, collaborators, or just someone who wants to talk about the game."
+  form_embed_url: ""
+
+# ---------- Newsletter ----------
+newsletter:
+  heading: "Get notified when Identity Protocol launches"
+  small_print: "No spam. Launch news and the odd devlog."
+  form_embed_url: ""

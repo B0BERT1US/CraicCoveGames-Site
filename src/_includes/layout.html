@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} | {{ site.name }}{% else %}{{ site.name }} | Indie game studio, Northern Ireland{% endif %}</title>
+<meta name="description" content="{{ description | default: site.description }}">
+<link rel="icon" href="{{ site.logo | img | url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
+</head>
+<body>
+{% if preview %}<div class="preview-bar">Preview site. Changes here are not live until you publish.</div>{% endif %}
+
+<header class="nav">
+  <nav class="wrap" aria-label="Main">
+    <a class="brand" href="{{ '/' | url }}">
+      <img src="{{ site.logo | img | url }}" alt="">
+      <span>{{ site.name }}</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link{% if page.url == '/' %} is-current{% endif %}" href="{{ '/' | url }}">Home</a>
+      <a class="nav-link{% if page.url == '/identity-protocol/' %} is-current{% endif %}" href="{{ '/identity-protocol/' | url }}">Identity Protocol</a>
+      <a class="nav-link{% if page.url contains '/news/' %} is-current{% endif %}" href="{{ '/news/' | url }}">News</a>
+      <a class="nav-link{% if page.url == '/join-us/' %} is-current{% endif %}" href="{{ '/join-us/' | url }}">Join Us</a>
+      <a class="nav-link{% if page.url == '/contact/' %} is-current{% endif %}" href="{{ '/contact/' | url }}">Contact</a>
+    </div>
+  </nav>
+</header>
+
+{{ content }}
+
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer-brand">
+      <strong>{{ site.name }}</strong>
+      <span>{{ site.location }}</span>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      {% if site.tiktok != "" %}<a href="{{ site.tiktok }}" target="_blank" rel="noopener">TikTok</a>{% endif %}
+      {% if site.podcast != "" %}<a href="{{ site.podcast }}" target="_blank" rel="noopener">Podcast</a>{% endif %}
+      {% if site.steam != "" %}<a href="{{ site.steam }}" target="_blank" rel="noopener">Steam</a>{% endif %}
+    </div>
+  </div>
+</footer>
+</body>
+</html>

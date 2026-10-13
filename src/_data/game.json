@@ -1,0 +1,27 @@
+{
+  "title": "Identity Protocol",
+  "tagline": "Arrest or kill. The machine decides.",
+  "banner": "/assets/img/identity-protocol-banner.png",
+  "status": "In development",
+  "intro": "You are an experimental police robot being trained to replace the human force. Each mission is a situation with more than one way through it. How you handle it decides whether the experiment survives.",
+  "pillars_heading": "Three ways through every situation",
+  "pillars": [
+    {
+      "title": "Brute Force",
+      "text": "Go in loud. Fast, direct, and the people inside remember it."
+    },
+    {
+      "title": "Tactical",
+      "text": "Plan the entry, control the room, keep everyone breathing."
+    },
+    {
+      "title": "Negotiation",
+      "text": "Talk them out. Slower, riskier, and nobody has to get hurt."
+    }
+  ],
+  "squad_heading": "Your Squad",
+  "squad_text": "A hive mind of up to four robot units under your control. Where you send them, and what you let them do, is on you.",
+  "screenshots": [],
+  "trailer": "",
+  "steam_button": "Wishlist On Steam"
+}

@@ -1,0 +1,25 @@
+---
+layout: default
+nav: news
+title: News and Devlog | CraicCove Games
+permalink: /news/
+---
+<section class="page-title">
+  <h1>News</h1>
+  <p>Dev updates on Identity Protocol, studio news, and the podcast.</p>
+</section>
+
+<section class="section bg-navy">
+  <div class="post-list">
+    {% for post in site.posts %}
+    <article class="post-item">
+      <span class="date">{{ post.date | date: "%-d %B %Y" }}</span>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+    </article>
+    {% endfor %}
+    {% if site.posts.size == 0 %}
+    <div class="form-missing">No posts yet.</div>
+    {% endif %}
+  </div>
+</section>

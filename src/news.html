@@ -1,0 +1,27 @@
+---
+layout: layout.html
+permalink: /news/
+title: News
+description: Dev updates and news from CraicCove Games.
+---
+<section class="page-head">
+  <h1>News</h1>
+  <p>Dev updates, podcast episodes and what we are working on.</p>
+</section>
+
+<section class="section navy">
+  <div class="post-list">
+    {% for post in collections.posts %}
+    <article class="post-card">
+      <span class="meta">{{ post.date | readableDate }}{% if post.data.draft %} &nbsp; <span class="draft-tag">Draft</span>{% endif %}</span>
+      <h3><a href="{{ post.url | url }}">{{ post.data.title }}</a></h3>
+      {% if post.data.image and post.data.image != "" %}<a href="{{ post.url | url }}"><img src="{{ post.data.image | img | url }}" alt=""></a>{% endif %}
+      {% if post.data.excerpt and post.data.excerpt != "" %}<p>{{ post.data.excerpt }}</p>{% endif %}
+      <a href="{{ post.url | url }}">Read more</a>
+    </article>
+    {% endfor %}
+    {% if collections.posts.size == 0 %}
+    <p class="statement">Nothing posted yet. Check back soon.</p>
+    {% endif %}
+  </div>
+</section>

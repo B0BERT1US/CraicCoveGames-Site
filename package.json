@@ -1,0 +1,14 @@
+{
+  "name": "craiccove-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CraicCove Games studio website",
+  "scripts": {
+    "build": "eleventy",
+    "build:preview": "PREVIEW=1 eleventy --pathprefix=/preview/",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

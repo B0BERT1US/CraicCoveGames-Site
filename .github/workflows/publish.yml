@@ -1,0 +1,36 @@
+# The "Publish preview to live site" button in Pages CMS runs this.
+# It copies everything on the preview branch onto main, then rebuilds the site.
+name: Publish preview to live site
+
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: Pages CMS payload as JSON
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Merge preview into main
+        run: |
+          git config user.name "Publish bot"
+          git config user.email "publish@users.noreply.github.com"
+          git merge origin/preview --no-edit -m "Publish preview to live site"
+          git push origin main
+
+      - name: Rebuild the site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main

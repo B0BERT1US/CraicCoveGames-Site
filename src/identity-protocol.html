@@ -1,0 +1,66 @@
+---
+layout: layout.html
+permalink: /identity-protocol/
+title: Identity Protocol
+description: Identity Protocol is a tactical FPS from CraicCove Games. You are the police robot. Arrest or kill, the machine decides.
+---
+<section class="section black game" style="padding-top: 48px;">
+  <div class="wrap">
+    <img class="banner" src="{{ game.banner | img | url }}" alt="{{ game.title }} key art">
+    <p class="hook">{{ game.tagline }}</p>
+    <p class="lead">{{ game.intro }}</p>
+    <div class="buttons center">
+      {% if site.steam != "" %}<a class="btn red" href="{{ site.steam }}" target="_blank" rel="noopener">{{ game.steam_button }}</a>{% endif %}
+      {% if game.trailer != "" %}<a class="btn ghost" href="{{ game.trailer }}" target="_blank" rel="noopener">Watch The Trailer</a>{% endif %}
+      {% if site.steam == "" and game.trailer == "" %}<span class="kicker" style="color: var(--stone);">{{ game.status }}</span>{% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="band dark">
+  <div class="wrap">
+    <h2>{{ game.pillars_heading }}</h2>
+    <div class="rule" style="background: var(--red);"></div>
+  </div>
+</section>
+
+<section class="section" style="background: #0A0A0A;">
+  <div class="wrap cols">
+    {% for p in game.pillars %}
+    <div class="col">
+      <span class="num" style="color: var(--red);">0{{ forloop.index }}</span>
+      <h3>{{ p.title }}</h3>
+      <p style="color: var(--stone);">{{ p.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band dark">
+  <div class="wrap">
+    <h2>{{ game.squad_heading }}</h2>
+    <div class="rule" style="background: var(--red);"></div>
+  </div>
+</section>
+
+<section class="section" style="background: #0A0A0A;">
+  <div class="narrow">
+    <p class="statement" style="color: var(--stone);">{{ game.squad_text }}</p>
+  </div>
+</section>
+
+{% if game.screenshots.size > 0 %}
+<section class="band dark">
+  <div class="wrap">
+    <h2>Screenshots</h2>
+    <div class="rule" style="background: var(--red);"></div>
+  </div>
+</section>
+<section class="section" style="background: #0A0A0A;">
+  <div class="wrap shots">
+    {% for s in game.screenshots %}
+    <img src="{{ s.image | img | url }}" alt="{{ s.caption }}">
+    {% endfor %}
+  </div>
+</section>
+{% endif %}

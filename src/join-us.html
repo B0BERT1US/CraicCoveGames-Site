@@ -1,0 +1,49 @@
+---
+layout: layout.html
+permalink: /join-us/
+title: Join Us
+description: Apply to work with CraicCove Games.
+---
+<section class="page-head">
+  <h1>Join Us</h1>
+  <p>We are three people and we are not hiring in the normal sense, but if you make things and want in on what we are building, tell us about yourself.</p>
+</section>
+
+<section class="section navy">
+  {% if site.formspree_id != "" %}
+  <form class="form" action="https://formspree.io/f/{{ site.formspree_id }}" method="POST">
+    <input type="hidden" name="_subject" value="Application via craiccovegames.com">
+    <label>Name <input type="text" name="name" required></label>
+    <label>Email <input type="email" name="email" required></label>
+    <label>Role
+      <select name="role" required>
+        <option value="">Pick one</option>
+        <option>3D Modeller</option>
+        <option>Programmer</option>
+        <option>Level Designer</option>
+        <option>Artist</option>
+        <option>Sound</option>
+        <option>Other</option>
+      </select>
+    </label>
+    <label>Portfolio or GitHub link <input type="url" name="portfolio" placeholder="https://"></label>
+    <label>Years of experience <input type="number" name="experience" min="0" max="50"></label>
+    <label>Availability
+      <select name="availability" required>
+        <option value="">Pick one</option>
+        <option>Part time</option>
+        <option>Full time</option>
+        <option>Freelance</option>
+      </select>
+    </label>
+    <label>Why CraicCove? <textarea name="why" required></textarea></label>
+    <label>Link to your CV (optional) <input type="url" name="cv_link" placeholder="https://"></label>
+    <div><button class="btn" type="submit">Send Application</button></div>
+  </form>
+  {% else %}
+  <div class="narrow" style="text-align: center;">
+    <p class="statement">Send us an email with your name, the role you are interested in, a link to your work, and a line on why CraicCove.</p>
+    <p style="margin-top: 24px;"><a class="btn" href="mailto:{{ site.email }}?subject=Joining%20CraicCove%20Games">Email {{ site.email }}</a></p>
+  </div>
+  {% endif %}
+</section>

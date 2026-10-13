@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% seo %}
+<link rel="icon" href="{{ '/img/logo.jpg' | relative_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+{% assign s = site.data.site %}
+<header class="site-header">
+  <nav class="site-nav wrap" aria-label="Main">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <img src="{{ '/img/logo.jpg' | relative_url }}" alt="">
+      <span>{{ s.studio_name }}</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link {% if page.nav == 'home' %}is-current{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+      <a class="nav-link {% if page.nav == 'game' %}is-current{% endif %}" href="{{ '/identity-protocol/' | relative_url }}">Identity Protocol</a>
+      <a class="nav-link {% if page.nav == 'news' %}is-current{% endif %}" href="{{ '/news/' | relative_url }}">News</a>
+      <a class="nav-link {% if page.nav == 'join' %}is-current{% endif %}" href="{{ '/join/' | relative_url }}">Join Us</a>
+      <a class="nav-link {% if page.nav == 'contact' %}is-current{% endif %}" href="{{ '/contact/' | relative_url }}">Contact</a>
+    </div>
+  </nav>
+</header>
+
+{{ content }}
+
+<footer class="site-footer">
+  <div class="footer-inner wrap">
+    <div class="footer-brand">
+      <span class="name">{{ s.studio_name }}</span>
+      <span class="loc">{{ s.location }}</span>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:{{ s.email }}">{{ s.email }}</a>
+      <a href="{{ s.tiktok_url }}" target="_blank" rel="noopener">TikTok</a>
+      <a href="{{ s.podcast_url }}" target="_blank" rel="noopener">Podcast</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

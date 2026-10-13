@@ -1,0 +1,16 @@
+---
+layout: layout.html
+---
+<section class="page-head">
+  <span class="meta">{{ page.date | readableDate }}{% if draft %} &nbsp; <span class="draft-tag">Draft</span>{% endif %}</span>
+  <h1 style="margin-top: 14px;">{{ title }}</h1>
+  {% if excerpt and excerpt != "" %}<p>{{ excerpt }}</p>{% endif %}
+</section>
+
+<section class="section navy">
+  <div class="post-body">
+    {% if image and image != "" %}<img src="{{ image | img | url }}" alt="" style="margin-bottom: 28px;">{% endif %}
+    {{ content }}
+    <p style="margin-top: 40px;"><a href="{{ '/news/' | url }}">Back to all news</a></p>
+  </div>
+</section>

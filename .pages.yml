@@ -1,0 +1,167 @@
+# Pages CMS config. Log in at https://app.pagescms.org with GitHub, open this repo,
+# and this file decides what you can edit.
+
+media:
+  input: src/assets/img
+  output: /assets/img
+
+content:
+  - name: posts
+    label: News posts
+    description: Dev updates and news. Tick Draft to keep a post off the live site.
+    type: collection
+    path: src/posts
+    exclude: [posts.json]
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: image
+        label: Header image
+        type: image
+      - name: excerpt
+        label: Short summary
+        description: One or two lines shown on the news list.
+        type: text
+      - name: draft
+        label: Draft (hidden from the live site, visible on the preview site)
+        type: boolean
+      - name: body
+        label: Post
+        type: rich-text
+
+  - name: home
+    label: Home page
+    type: file
+    path: src/_data/home.json
+    fields:
+      - name: hero
+        label: Top section
+        type: object
+        fields:
+          - { name: kicker, label: Small line above the title, type: string }
+          - { name: title_line_1, label: Title line 1, type: string }
+          - { name: title_line_2, label: Title line 2, type: string }
+          - { name: text, label: Text, type: text }
+          - { name: button_1, label: Button 1 (goes to Identity Protocol), type: string }
+          - { name: button_2, label: Button 2 (goes to Join Us), type: string }
+      - name: project
+        label: Our Current Project
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: hook, label: Hook line under the banner, type: string }
+          - { name: text, label: Text, type: text }
+          - { name: button, label: Button, type: string }
+          - { name: steam_button, label: Steam button (shows once the Steam link is set in Site settings), type: string }
+      - name: about
+        label: About Us
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+      - name: name
+        label: The Name
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - name: columns
+            label: Columns
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: text, label: Text, type: text }
+      - name: mission
+        label: Our Mission
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: statement, label: Statement, type: text }
+          - name: columns
+            label: Columns
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Title, type: string }
+              - { name: text, label: Text, type: text }
+      - name: team
+        label: Meet The Team
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - name: members
+            label: Members
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Name, type: string }
+              - { name: role, label: Role, type: string }
+              - { name: photo, label: Photo (square works best), type: image }
+              - { name: bio, label: One line about them (optional), type: text }
+      - name: newsletter
+        label: Newsletter box (shows once the newsletter form ID is set in Site settings)
+        type: object
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: text, label: Small print, type: string }
+          - { name: button, label: Button, type: string }
+
+  - name: game
+    label: Identity Protocol page
+    type: file
+    path: src/_data/game.json
+    fields:
+      - { name: title, label: Game title, type: string }
+      - { name: tagline, label: Tagline, type: string }
+      - { name: banner, label: Banner image, type: image }
+      - { name: status, label: Status line (shown until a Steam or trailer link exists), type: string }
+      - { name: intro, label: Intro text, type: text }
+      - { name: pillars_heading, label: Pillars heading, type: string }
+      - name: pillars
+        label: Pillars
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Text, type: text }
+      - { name: squad_heading, label: Squad heading, type: string }
+      - { name: squad_text, label: Squad text, type: text }
+      - name: screenshots
+        label: Screenshots
+        type: object
+        list: true
+        fields:
+          - { name: image, label: Image, type: image }
+          - { name: caption, label: Caption, type: string }
+      - { name: trailer, label: Trailer link (YouTube), type: string }
+      - { name: steam_button, label: Steam button text, type: string }
+
+  - name: settings
+    label: Site settings
+    type: file
+    path: src/_data/site.json
+    fields:
+      - { name: name, label: Studio name, type: string }
+      - { name: description, label: Description for Google, type: text }
+      - { name: location, label: Location, type: string }
+      - { name: email, label: Email, type: string }
+      - { name: logo, label: Logo, type: image }
+      - { name: tiktok, label: TikTok link, type: string }
+      - { name: podcast, label: Podcast link, type: string }
+      - { name: steam, label: Steam page link, type: string }
+      - { name: formspree_id, label: Formspree form ID (contact and application forms), description: "Free account at formspree.io, create a form, paste the ID here. Leave empty to show the email address instead.", type: string }
+      - { name: newsletter_form_id, label: Formspree form ID for the newsletter box, type: string }
+
+actions:
+  - name: publish
+    label: Publish preview to live site
+    workflow: publish.yml
+    ref: main

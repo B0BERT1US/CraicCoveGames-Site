@@ -1,0 +1,62 @@
+---
+layout: default
+nav: game
+title: Identity Protocol | CraicCove Games
+permalink: /identity-protocol/
+---
+{% assign s = site.data.site %}
+
+<section class="section bg-black" style="padding-top:48px">
+  <div class="game wrap">
+    <img class="banner" src="{{ '/img/identity-protocol-banner.png' | relative_url }}" alt="Identity Protocol key art">
+    <p class="hook">{{ s.game.hook }}</p>
+    <p class="blurb">{{ s.game.intro }}</p>
+    <div class="btn-row center">
+      <a class="btn btn-red" href="{{ s.steam_url }}" target="_blank" rel="noopener">Wishlist On Steam</a>
+      <a class="btn btn-grey" href="{{ '/news/' | relative_url }}">Read The Devlog</a>
+    </div>
+  </div>
+</section>
+
+<section class="band band-deep">
+  <div class="wrap">
+    <h2>Three Ways Through Every Situation</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="section bg-navy">
+  <div class="cols wrap">
+    {% for c in s.game.pillars %}
+    <div class="col">
+      <span class="num">0{{ forloop.index }}</span>
+      <h3>{{ c.title }}</h3>
+      <p>{{ c.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Your Squad</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="section bg-navy">
+  <div class="narrow"><p class="statement">{{ s.game.squad }}</p></div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Screenshots</h2>
+    <div class="rule"></div>
+  </div>
+</section>
+
+<section class="section bg-navy">
+  <div class="form-missing">Screenshots coming soon. Drop images into the img folder and list them here.</div>
+</section>
+
+{% include newsletter.html %}
