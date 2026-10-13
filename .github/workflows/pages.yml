@@ -15,7 +15,7 @@ on:
         type: string
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -32,6 +32,13 @@ jobs:
         with:
           ref: main
           path: live
+
+      - name: Make sure the preview branch exists (first run only)
+        working-directory: live
+        run: |
+          if ! git ls-remote --exit-code --heads origin preview >/dev/null; then
+            git push origin HEAD:refs/heads/preview
+          fi
 
       - name: Check out preview
         uses: actions/checkout@v4
