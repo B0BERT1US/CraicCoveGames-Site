@@ -2,7 +2,7 @@
 
 Static site built with Eleventy, hosted on GitHub Pages, edited through Pages CMS.
 
-- Live site: built from the `main` branch
+- Live site: built from the `main` branch (root of the domain, or /repo-name/ until a domain is attached)
 - Preview site: built from the `preview` branch, served at `/preview/`
 - Edit at https://app.pagescms.org (log in with GitHub, pick this repo)
 - Publish: the "Publish preview to live site" button in Pages CMS, or run the

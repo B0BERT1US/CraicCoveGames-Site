@@ -50,27 +50,35 @@ jobs:
         with:
           node-version: 22
 
+      # Works out the site address: root for a *.github.io repo or a custom
+      # domain, /repo-name/ for any other repo name.
+      - id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - name: Build live site
         working-directory: live
+        env:
+          PATH_PREFIX: ${{ steps.pages.outputs.base_path }}/
         run: |
           npm install --no-audit --no-fund
           npx eleventy
 
       - name: Build preview site
         working-directory: preview
+        env:
+          PREVIEW: "1"
+          PATH_PREFIX: ${{ steps.pages.outputs.base_path }}/preview/
         run: |
           npm install --no-audit --no-fund
-          PREVIEW=1 npx eleventy --pathprefix=/preview/
+          npx eleventy
 
       - name: Combine
         run: |
           mkdir -p live/_site/preview
           cp -r preview/_site/. live/_site/preview/
           touch live/_site/.nojekyll
-
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
