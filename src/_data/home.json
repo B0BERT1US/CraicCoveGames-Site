@@ -23,8 +23,7 @@
       "text": "A tactical FPS where you are a police robot, an experiment built to replace the human force. Every mission is a test. Your choices decide whether the experiment succeeds or gets shut down.",
       "button": "Find Out More",
       "button_link": "/identity-protocol/",
-      "button_2": "Wishlist On Steam",
-      "button_2_link": ""
+      "button_2": "Wishlist On Steam"
     },
     {
       "type": "heading",
@@ -62,7 +61,7 @@
     },
     {
       "type": "columns",
-      "numbered": true,
+      "numbered": false,
       "items": [
         {
           "title": "Real Issues",
@@ -88,20 +87,17 @@
         {
           "name": "Mark Buick",
           "role": "Co-Founder, 3D Modeller",
-          "photo": "/assets/img/mark-buick.jpg",
-          "bio": ""
+          "photo": "/assets/img/mark-buick.jpg"
         },
         {
           "name": "Dylan Kelly",
           "role": "Co-Founder, Programmer",
-          "photo": "/assets/img/dylan-kelly.jpg",
-          "bio": ""
+          "photo": "/assets/img/dylan-kelly.jpg"
         },
         {
           "name": "Ciaran Fisher",
           "role": "Co-Founder, Level Design",
-          "photo": "/assets/img/ciaran-fisher.jpg",
-          "bio": ""
+          "photo": "/assets/img/ciaran-fisher.jpg"
         }
       ]
     },
