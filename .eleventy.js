@@ -27,6 +27,13 @@ module.exports = function (eleventyConfig) {
     return "/assets/img/" + v;
   });
 
+  // Links typed in the admin panel: "/join-us/" gets the preview prefix, full URLs pass through
+  eleventyConfig.addFilter("link", (v) => {
+    if (!v) return "#";
+    if (v.startsWith("/")) return (preview ? "/preview" : "") + v;
+    return v;
+  });
+
   return {
     dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
     pathPrefix: process.env.PREVIEW === "1" ? "/preview/" : "/",

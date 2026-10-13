@@ -7,8 +7,20 @@
 <meta name="description" content="{{ description | default: site.description }}">
 <link rel="icon" href="{{ site.logo | img | url }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+{% assign fh = site.fonts.headings | default: "Barlow Condensed" | replace: " ", "+" %}{% assign fb = site.fonts.body | default: "Barlow" | replace: " ", "+" %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ fh }}:wght@600;700;800&family={{ fb }}:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
+<style>
+:root {
+  --night: {{ site.colors.background | default: "#0B1322" }};
+  --navy: {{ site.colors.section | default: "#122744" }};
+  --amber: {{ site.colors.accent | default: "#D98E32" }};
+  --text: {{ site.colors.text | default: "#C9D2DE" }};
+  --bright: {{ site.colors.headings | default: "#F2EFE8" }};
+  --font-headings: '{{ site.fonts.headings | default: "Barlow Condensed" }}';
+  --font-body: '{{ site.fonts.body | default: "Barlow" }}';
+}
+</style>
 </head>
 <body>
 {% if preview %}<div class="preview-bar">Preview site. Changes here are not live until you publish.</div>{% endif %}

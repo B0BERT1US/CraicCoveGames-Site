@@ -2,101 +2,96 @@
 layout: layout.html
 permalink: /
 ---
-<section class="hero" id="top">
+{% for b in home.sections %}
+
+{% if b.type == "hero" %}
+<section class="hero">
   <div class="wrap">
     <div class="hero-text">
-      <span class="kicker">{{ home.hero.kicker }}</span>
-      <h1>{{ home.hero.title_line_1 }}<br>{{ home.hero.title_line_2 }}</h1>
-      <p>{{ home.hero.text }}</p>
+      {% if b.kicker and b.kicker != "" %}<span class="kicker">{{ b.kicker }}</span>{% endif %}
+      <h1>{{ b.title_line_1 }}{% if b.title_line_2 and b.title_line_2 != "" %}<br>{{ b.title_line_2 }}{% endif %}</h1>
+      {% if b.text and b.text != "" %}<p>{{ b.text }}</p>{% endif %}
       <div class="buttons">
-        <a class="btn" href="{{ '/identity-protocol/' | url }}">{{ home.hero.button_1 }}</a>
-        <a class="btn quiet" href="{{ '/join-us/' | url }}">{{ home.hero.button_2 }}</a>
+        {% if b.button_1 and b.button_1 != "" %}<a class="btn" href="{{ b.button_1_link | link }}">{{ b.button_1 }}</a>{% endif %}
+        {% if b.button_2 and b.button_2 != "" %}<a class="btn quiet" href="{{ b.button_2_link | link }}">{{ b.button_2 }}</a>{% endif %}
       </div>
     </div>
+    {% if b.image and b.image != "" %}
     <div class="hero-logo">
-      <img src="{{ site.logo | img | url }}" alt="{{ site.name }} logo">
+      <img src="{{ b.image | img | url }}" alt="{{ site.name }}">
     </div>
+    {% endif %}
   </div>
 </section>
+{% endif %}
 
-<section class="band dark" id="project">
+{% if b.type == "heading" %}
+{% assign nxt = home.sections[forloop.index] %}
+<section class="band{% if nxt and nxt.type == "game" %} dark{% endif %}">
   <div class="wrap">
-    <h2>{{ home.project.heading }}</h2>
+    <h2>{{ b.heading }}</h2>
     <div class="rule"></div>
   </div>
 </section>
+{% endif %}
 
+{% if b.type == "small_heading" %}
+<section class="subband">
+  <div class="wrap"><h3>{{ b.heading }}</h3></div>
+</section>
+{% endif %}
+
+{% if b.type == "game" %}
 <section class="section black game">
   <div class="wrap">
-    <img class="banner" src="{{ game.banner | img | url }}" alt="{{ game.title }} key art">
-    <p class="hook">{{ home.project.hook }}</p>
-    <p class="lead">{{ home.project.text }}</p>
+    {% if b.image and b.image != "" %}<img class="banner" src="{{ b.image | img | url }}" alt="">{% endif %}
+    {% if b.hook and b.hook != "" %}<p class="hook">{{ b.hook }}</p>{% endif %}
+    {% if b.text and b.text != "" %}<p class="lead">{{ b.text }}</p>{% endif %}
     <div class="buttons center">
-      <a class="btn red" href="{{ '/identity-protocol/' | url }}">{{ home.project.button }}</a>
-      {% if site.steam != "" %}<a class="btn ghost" href="{{ site.steam }}" target="_blank" rel="noopener">{{ home.project.steam_button }}</a>{% endif %}
+      {% if b.button and b.button != "" %}<a class="btn red" href="{{ b.button_link | link }}">{{ b.button }}</a>{% endif %}
+      {% if b.button_2 and b.button_2 != "" and b.button_2_link and b.button_2_link != "" %}<a class="btn ghost" href="{{ b.button_2_link | link }}">{{ b.button_2 }}</a>{% endif %}
     </div>
   </div>
 </section>
+{% endif %}
 
-<section class="band" id="about">
-  <div class="wrap">
-    <h2>{{ home.about.heading }}</h2>
-    <div class="rule"></div>
-  </div>
-</section>
-
-<section class="subband">
-  <div class="wrap"><h3>{{ home.name.heading }}</h3></div>
-</section>
-
+{% if b.type == "columns" %}
 <section class="section navy">
   <div class="wrap cols">
-    {% for c in home.name.columns %}
+    {% for c in b.items %}
     <div class="col">
+      {% if b.numbered %}<span class="num">0{{ forloop.index }}</span>{% endif %}
       <h3>{{ c.title }}</h3>
-      <p>{{ c.text }}</p>
+      <p>{{ c.text | newline_to_br }}</p>
     </div>
     {% endfor %}
   </div>
 </section>
+{% endif %}
 
-<section class="band" id="mission">
-  <div class="wrap">
-    <h2>{{ home.mission.heading }}</h2>
-    <div class="rule"></div>
-  </div>
-</section>
-
-<section class="section navy" style="padding-bottom: 24px;">
+{% if b.type == "text" %}
+<section class="section navy" style="padding-bottom: 32px;">
   <div class="narrow">
-    <p class="statement">{{ home.mission.statement }}</p>
+    <p class="statement">{{ b.text | newline_to_br }}</p>
   </div>
 </section>
+{% endif %}
 
-<section class="section navy" style="padding-top: 24px;">
-  <div class="wrap cols">
-    {% for c in home.mission.columns %}
-    <div class="col">
-      <span class="num">0{{ forloop.index }}</span>
-      <h3>{{ c.title }}</h3>
-      <p>{{ c.text }}</p>
-    </div>
-    {% endfor %}
+{% if b.type == "image" %}
+<section class="section navy">
+  <div class="wrap" style="text-align: center;">
+    <img src="{{ b.image | img | url }}" alt="{{ b.caption }}" style="max-width: 100%; height: auto; border-radius: 4px;">
+    {% if b.caption and b.caption != "" %}<p class="meta" style="margin-top: 12px;">{{ b.caption }}</p>{% endif %}
   </div>
 </section>
+{% endif %}
 
-<section class="band" id="team">
-  <div class="wrap">
-    <h2>{{ home.team.heading }}</h2>
-    <div class="rule"></div>
-  </div>
-</section>
-
+{% if b.type == "team" %}
 <section class="section navy">
   <div class="wrap cols">
-    {% for m in home.team.members %}
+    {% for m in b.members %}
     <div class="col">
-      <img src="{{ m.photo | img | url }}" alt="{{ m.name }}">
+      {% if m.photo and m.photo != "" %}<img src="{{ m.photo | img | url }}" alt="{{ m.name }}">{% endif %}
       <h3>{{ m.name }}</h3>
       <p class="role">{{ m.role }}</p>
       {% if m.bio and m.bio != "" %}<p>{{ m.bio }}</p>{% endif %}
@@ -104,17 +99,22 @@ permalink: /
     {% endfor %}
   </div>
 </section>
+{% endif %}
 
+{% if b.type == "newsletter" %}
 {% if site.newsletter_form_id != "" %}
 <section class="band">
   <div class="wrap">
-    <h2>{{ home.newsletter.heading }}</h2>
+    <h2>{{ b.heading }}</h2>
     <div class="rule"></div>
     <form class="inline-form" style="margin-top: 28px;" action="https://formspree.io/f/{{ site.newsletter_form_id }}" method="POST">
       <input type="email" name="email" placeholder="Your email" required aria-label="Email">
-      <button class="btn" type="submit">{{ home.newsletter.button }}</button>
+      <button class="btn" type="submit">{{ b.button }}</button>
     </form>
-    <p style="margin-top: 14px; color: var(--muted); font-size: 15px;">{{ home.newsletter.text }}</p>
+    {% if b.text and b.text != "" %}<p style="margin-top: 14px; color: var(--muted); font-size: 15px;">{{ b.text }}</p>{% endif %}
   </div>
 </section>
 {% endif %}
+{% endif %}
+
+{% endfor %}

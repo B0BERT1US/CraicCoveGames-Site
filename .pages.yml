@@ -40,79 +40,84 @@ content:
 
   - name: home
     label: Home page
+    description: The home page is a stack of sections. Add, remove and drag them into any order.
     type: file
     path: src/_data/home.json
     fields:
-      - name: hero
-        label: Top section
-        type: object
-        fields:
-          - { name: kicker, label: Small line above the title, type: string }
-          - { name: title_line_1, label: Title line 1, type: string }
-          - { name: title_line_2, label: Title line 2, type: string }
-          - { name: text, label: Text, type: text }
-          - { name: button_1, label: Button 1 (goes to Identity Protocol), type: string }
-          - { name: button_2, label: Button 2 (goes to Join Us), type: string }
-      - name: project
-        label: Our Current Project
-        type: object
-        fields:
-          - { name: heading, label: Heading, type: string }
-          - { name: hook, label: Hook line under the banner, type: string }
-          - { name: text, label: Text, type: text }
-          - { name: button, label: Button, type: string }
-          - { name: steam_button, label: Steam button (shows once the Steam link is set in Site settings), type: string }
-      - name: about
-        label: About Us
-        type: object
-        fields:
-          - { name: heading, label: Heading, type: string }
-      - name: name
-        label: The Name
-        type: object
-        fields:
-          - { name: heading, label: Heading, type: string }
-          - name: columns
-            label: Columns
-            type: object
-            list: true
+      - name: sections
+        label: Sections
+        type: block
+        list: true
+        blockKey: type
+        blocks:
+          - name: hero
+            label: Big top section (title, text, two buttons, image)
             fields:
-              - { name: title, label: Title, type: string }
+              - { name: kicker, label: Small line above the title, type: string }
+              - { name: title_line_1, label: Title line 1, type: string }
+              - { name: title_line_2, label: Title line 2, type: string }
               - { name: text, label: Text, type: text }
-      - name: mission
-        label: Our Mission
-        type: object
-        fields:
-          - { name: heading, label: Heading, type: string }
-          - { name: statement, label: Statement, type: text }
-          - name: columns
-            label: Columns
-            type: object
-            list: true
+              - { name: button_1, label: Button 1 text, type: string }
+              - { name: button_1_link, label: Button 1 link, type: string, description: "A page on this site like /identity-protocol/ or /join-us/ or /news/, or a full link starting with https://" }
+              - { name: button_2, label: Button 2 text, type: string }
+              - { name: button_2_link, label: Button 2 link, type: string, description: "A page on this site like /identity-protocol/ or /join-us/ or /news/, or a full link starting with https://" }
+              - { name: image, label: Image on the right, type: image }
+          - name: heading
+            label: Heading bar
             fields:
-              - { name: title, label: Title, type: string }
+              - { name: heading, label: Heading, type: string }
+          - name: small_heading
+            label: Small heading line
+            fields:
+              - { name: heading, label: Heading, type: string }
+          - name: game
+            label: Game showcase (black section with banner)
+            fields:
+              - { name: image, label: Banner image, type: image }
+              - { name: hook, label: Hook line, type: string }
               - { name: text, label: Text, type: text }
-      - name: team
-        label: Meet The Team
-        type: object
-        fields:
-          - { name: heading, label: Heading, type: string }
-          - name: members
-            label: Members
-            type: object
-            list: true
+              - { name: button, label: Button text, type: string }
+              - { name: button_link, label: Button link, type: string, description: "A page on this site like /identity-protocol/ or /join-us/ or /news/, or a full link starting with https://" }
+              - { name: button_2, label: Second button text (only shows if it has a link), type: string }
+              - { name: button_2_link, label: Second button link, type: string, description: "A page on this site like /identity-protocol/ or /join-us/ or /news/, or a full link starting with https://" }
+          - name: columns
+            label: Three columns
             fields:
-              - { name: name, label: Name, type: string }
-              - { name: role, label: Role, type: string }
-              - { name: photo, label: Photo (square works best), type: image }
-              - { name: bio, label: One line about them (optional), type: text }
-      - name: newsletter
-        label: Newsletter box (shows once the newsletter form ID is set in Site settings)
-        type: object
-        fields:
-          - { name: heading, label: Heading, type: string }
-          - { name: text, label: Small print, type: string }
-          - { name: button, label: Button, type: string }
+              - { name: numbered, label: Show 01 02 03 above the titles, type: boolean }
+              - name: items
+                label: Columns
+                type: object
+                list: true
+                fields:
+                  - { name: title, label: Title, type: string }
+                  - { name: text, label: Text, type: text }
+          - name: text
+            label: Paragraph (centred)
+            fields:
+              - { name: text, label: Text, type: text }
+          - name: image
+            label: Full width image
+            fields:
+              - { name: image, label: Image, type: image }
+              - { name: caption, label: Caption, type: string }
+          - name: team
+            label: Team members
+            fields:
+              - name: members
+                label: Members
+                type: object
+                list: true
+                fields:
+                  - { name: name, label: Name, type: string }
+                  - { name: role, label: Role, type: string }
+                  - { name: photo, label: Photo (square works best), type: image }
+                  - { name: bio, label: One line about them (optional), type: text }
+          - name: newsletter
+            label: Newsletter signup (shows once the newsletter form ID is set in Site settings)
+            fields:
+              - { name: heading, label: Heading, type: string }
+              - { name: text, label: Small print, type: string }
+              - { name: button, label: Button text, type: string }
 
   - name: game
     label: Identity Protocol page
@@ -159,6 +164,23 @@ content:
       - { name: steam, label: Steam page link, type: string }
       - { name: formspree_id, label: Formspree form ID (contact and application forms), description: "Free account at formspree.io, create a form, paste the ID here. Leave empty to show the email address instead.", type: string }
       - { name: newsletter_form_id, label: Formspree form ID for the newsletter box, type: string }
+      - name: colors
+        label: Colours
+        description: "Hex codes, like #D98E32. Leave one empty to get the default back."
+        type: object
+        fields:
+          - { name: background, label: Page background (dark), type: string }
+          - { name: section, label: Section background (navy), type: string }
+          - { name: accent, label: Accent (buttons, lines, roles), type: string }
+          - { name: text, label: Body text, type: string }
+          - { name: headings, label: Headings, type: string }
+      - name: fonts
+        label: Fonts
+        description: "Any Google Font name, spelt exactly as on fonts.google.com. Condensed fonts suit the headings: Barlow Condensed, Oswald, Anton, Bebas Neue."
+        type: object
+        fields:
+          - { name: headings, label: Headings font, type: string }
+          - { name: body, label: Body font, type: string }
 
 actions:
   - name: publish

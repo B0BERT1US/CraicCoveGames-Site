@@ -8,5 +8,16 @@
   "podcast": "",
   "steam": "",
   "formspree_id": "",
-  "newsletter_form_id": ""
+  "newsletter_form_id": "",
+  "colors": {
+    "background": "#0B1322",
+    "section": "#122744",
+    "accent": "#D98E32",
+    "text": "#C9D2DE",
+    "headings": "#F2EFE8"
+  },
+  "fonts": {
+    "headings": "Barlow Condensed",
+    "body": "Barlow"
+  }
 }

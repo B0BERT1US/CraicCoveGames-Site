@@ -23,7 +23,7 @@ body {
   margin: 0;
   background: var(--night);
   color: var(--text);
-  font-family: 'Barlow', system-ui, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
 }
@@ -32,7 +32,7 @@ a { color: var(--amber); }
 a:hover { color: var(--amber-light); }
 
 h1, h2, h3 {
-  font-family: 'Barlow Condensed', 'Barlow', system-ui, sans-serif;
+  font-family: var(--font-headings), var(--font-body), system-ui, sans-serif;
   color: var(--bright);
   margin: 0;
   line-height: 1.1;
@@ -63,7 +63,7 @@ p { margin: 0; }
   gap: 14px;
   text-decoration: none;
   color: var(--bright);
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-headings), sans-serif;
   font-weight: 700;
   font-size: 24px;
   letter-spacing: 1px;
@@ -71,7 +71,7 @@ p { margin: 0; }
 .brand img { width: 44px; height: 44px; object-fit: cover; border-radius: 50%; }
 .nav-links { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
 .nav-link {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-headings), sans-serif;
   font-weight: 600;
   font-size: 17px;
   letter-spacing: 2px;
@@ -108,7 +108,7 @@ p { margin: 0; }
 .subband h3 { font-size: 30px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--amber); }
 
 .kicker {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-headings), sans-serif;
   font-weight: 600;
   font-size: 16px;
   letter-spacing: 4px;
@@ -133,7 +133,7 @@ p { margin: 0; }
 .buttons.center { justify-content: center; }
 .btn {
   display: inline-block;
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-headings), sans-serif;
   font-weight: 700;
   font-size: 18px;
   letter-spacing: 2px;
@@ -158,7 +158,7 @@ p { margin: 0; }
 .game .wrap { display: flex; flex-direction: column; align-items: center; gap: 32px; }
 .game img.banner { width: 100%; max-width: 1120px; height: auto; display: block; }
 .hook {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-headings), sans-serif;
   font-weight: 600;
   font-size: 26px;
   letter-spacing: 3px;
@@ -173,10 +173,10 @@ p { margin: 0; }
 .col { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; flex: 1 1 300px; min-width: 0; }
 .col h3 { font-size: 34px; font-weight: 700; letter-spacing: 1px; }
 .col p { font-size: 17px; line-height: 1.65; }
-.col .num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 4px; color: var(--amber); }
+.col .num { font-family: var(--font-headings), sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 4px; color: var(--amber); }
 .col img { width: 100%; max-width: 320px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; border: 1px solid #2A3F62; }
 .col .role {
-  font-family: 'Barlow Condensed', sans-serif;
+  font-family: var(--font-headings), sans-serif;
   font-weight: 600;
   font-size: 17px;
   letter-spacing: 3px;
@@ -187,9 +187,9 @@ p { margin: 0; }
 
 /* Forms */
 .form { display: flex; flex-direction: column; gap: 18px; max-width: 640px; margin: 0 auto; }
-.form label { display: flex; flex-direction: column; gap: 6px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); }
+.form label { display: flex; flex-direction: column; gap: 6px; font-family: var(--font-headings), sans-serif; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); }
 .form input, .form textarea, .form select {
-  font-family: 'Barlow', sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 17px;
   padding: 12px 14px;
   background: var(--night);
@@ -209,14 +209,14 @@ p { margin: 0; }
 .post-card h3 a { color: var(--bright); text-decoration: none; }
 .post-card h3 a:hover { color: var(--amber-light); }
 .post-card img { width: 100%; height: auto; border-radius: 4px; }
-.meta { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+.meta { font-family: var(--font-headings), sans-serif; font-size: 15px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
 .post-body { max-width: 760px; margin: 0 auto; font-size: 18px; }
 .post-body h2 { font-size: 34px; margin: 36px 0 12px; }
 .post-body h3 { font-size: 26px; margin: 28px 0 10px; }
 .post-body p { margin: 0 0 18px; }
 .post-body img { max-width: 100%; height: auto; border-radius: 4px; }
 .post-body ul, .post-body ol { padding-left: 24px; margin: 0 0 18px; }
-.draft-tag { display: inline-block; padding: 4px 10px; border: 1px solid var(--amber); color: var(--amber); font-family: 'Barlow Condensed', sans-serif; letter-spacing: 2px; font-size: 14px; }
+.draft-tag { display: inline-block; padding: 4px 10px; border: 1px solid var(--amber); color: var(--amber); font-family: var(--font-headings), sans-serif; letter-spacing: 2px; font-size: 14px; }
 
 /* Page header for inner pages */
 .page-head { padding: 72px 48px 56px; background: linear-gradient(180deg, #16294A 0%, #0E1C33 100%); text-align: center; }
@@ -231,13 +231,13 @@ p { margin: 0; }
 .footer { padding: 40px 48px; background: var(--ink); border-top: 1px solid var(--line); }
 .footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
 .footer-brand { display: flex; flex-direction: column; gap: 6px; }
-.footer-brand strong { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 1px; color: var(--bright); }
+.footer-brand strong { font-family: var(--font-headings), sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 1px; color: var(--bright); }
 .footer-brand span { font-size: 15px; color: var(--muted); }
 .footer-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
 .footer-links a { font-size: 15px; text-decoration: none; }
 
 /* Preview banner */
-.preview-bar { background: var(--amber); color: var(--night); text-align: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; font-size: 14px; }
+.preview-bar { background: var(--amber); color: var(--night); text-align: center; font-family: var(--font-headings), sans-serif; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 8px 16px; font-size: 14px; }
 
 @media (max-width: 720px) {
   .nav, .section, .band, .subband, .hero, .footer, .page-head { padding-left: 20px; padding-right: 20px; }
